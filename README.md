@@ -8,7 +8,7 @@ Voir la section générale [Installation & développement](https://github.com/IG
 ## Instance de test
 
 Une instance de test de l'application est disponible dans le répertoire `./docs` du projet.   
-Vous pouvez test les derniers [développements en ligne](https://ignf-ma-carte.github.io/3d/?map=4abe44d25ec0a28b7159b27cd25ce476).
+Vous pouvez test les derniers [développements en ligne](https://ignf-ma-carte.github.io/viewer3d/?map=4abe44d25ec0a28b7159b27cd25ce476).
 
 NB: l'instance de test est branchée sur la base de donnée de [qualification du site Ma carte](https://macarte-qualif.ign.fr/). Vous devez avoir un compte sur cette base pour certaines opérations.
 
