@@ -1,5 +1,12 @@
 # mcviewer3D
 *Macarte 3D viewer app*
+<!--
+![](https://img.shields.io/github/v/release/IGNF-Ma-carte/mcviewer3D)
+-->
+![](https://img.shields.io/github/stars/IGNF-Ma-carte/mcviewer3D)
+![](https://img.shields.io/github/commit-activity/m/IGNF-Ma-carte/mcviewer3D)
+![](https://img.shields.io/github/contributors/IGNF-Ma-carte/mcviewer3D)
+![](https://img.shields.io/github/license/IGNF-Ma-carte/mcviewer3D)
 
 ## Installation et développement
 
