@@ -22,6 +22,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "geojsonx": "github:Viglino/GeoJSONX",
     "itowns": "^2.38.2",
     "mcutils": "git+https://github.com/IGNF-Ma-carte/mcutils"
   },

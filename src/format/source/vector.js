@@ -1,5 +1,6 @@
 import * as itowns from 'itowns'
 import { defaultIgnStyle } from 'mcutils/style/ignStyle'
+import GeoJSONXFormat from 'GeoJSONX/geojsonx'
 
 import SymbolLib from 'mcutils/style/SymbolLib';
 
@@ -46,21 +47,34 @@ function getPatternImage(ignStyle) {
  * @param {Object} options
  */
 function vectorFormat(l, options) {
+  console.log(l)
   const geojson = {
     type: 'FeatureCollection',
     features: []
   };
 
-  l.features.forEach(f => {
-    geojson.features.push({
-      type: 'Feature',
-      properties: f.attributes,
-      geometry: {
-        type: f.type,
-        coordinates: f.coords
-      },
+  if (l.data) {
+    const format = new GeoJSONXFormat()
+    const features = geojson.features = format.toGeoJSON(l.data).features;
+    l.data.style.forEach((s, i) => {
+      const style = {}
+      Object.keys(s).forEach(k => style[shortStyle[k]] = s[k])
+      features[i].style = style
     })
-  })
+    l.data.popupContent.forEach((s, i) => features[i].popupContent = s)
+    l.features = features
+  } else {
+    l.features.forEach(f => {
+      geojson.features.push({
+        type: 'Feature',
+        properties: f.attributes,
+        geometry: {
+          type: f.type,
+          coordinates: f.coords
+        },
+      })
+    })
+  }
 
   const result = new itowns.FileSource({
     crs: 'EPSG:3857',
