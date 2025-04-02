@@ -1,4 +1,4 @@
-import * as itowns from 'itowns'
+import * as itowns from '../itowns/itowns'
 
 /** Create a new iTowns layer
  * @param {Object} source
@@ -17,18 +17,28 @@ function layerFormat(source, layer, options) {
     config.extent = new itowns.Extent('EPSG:3857', layer.extent[0], layer.extent[2], layer.extent[1], layer.extent[3])
   }
   
-/** /
+/**/
   // FeatureGeometryLayer? 
   if (source instanceof itowns.FileSource) {
     config.transparent = true,
-    config.style = new itowns.Style({
+    config.style = {
+      point: {
+        color: f => f._style.point.color,
+        radius: f => f._style.point.radius,
+        line: f => f._style.point.line,
+        width: f => f._style.point.width,
+      },
+      stroke: {
+        color: f => f._style.stroke.color,
+        width: f => f._style.stroke.width
+      },
       fill: {
-        color: 'rgba(0,0,255,.5)',
-        extrusion_height: 200,
+        color: f => f._style.fill.color,
+        pattern: f => f._style.fill.pattern
       }
-    })
+    }
   
-    return new itowns.FeatureGeometryLayer('LAYER_' + layer.id, config);
+//    return new itowns.FeatureGeometryLayer('LAYER_' + layer.id, config);
   }
 /**/
   const itLayer = new itowns.ColorLayer('LAYER_' + (layer.id || ''), config)

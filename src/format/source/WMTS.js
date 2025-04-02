@@ -1,4 +1,4 @@
-import * as itowns from 'itowns'
+import * as itowns from '../../itowns/itowns'
 import configGPP from '../../config/geoportail.js'
 
 const limits = configGPP.source.tileMatrixSetLimits;

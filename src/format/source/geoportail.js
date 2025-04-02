@@ -1,4 +1,4 @@
-import * as itowns from 'itowns'
+import * as itowns from '../../itowns/itowns'
 import Geoportail from 'mcutils/layer/Geoportail'
 import configGPP from '../../config/geoportail.js'
 
@@ -15,7 +15,7 @@ function geoportailFormat(source, options) {
   // Default config
   const config = Object.assign({}, configGPP.source)
   // Options
-  config.url = cap.server.replace(/^(https?:\/\/[^/]*)(.*)$/, "$1/" + cap.key + "$2"),
+  config.url = cap.server,
   config.name = cap.layer,
   config.format = cap.format || 'image/jpeg',
   config.style = cap.style || 'normal',

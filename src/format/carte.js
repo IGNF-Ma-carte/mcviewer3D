@@ -6,10 +6,9 @@ import WMTSFormat from './source/WMTS'
 import geoportailFormat from './source/geoportail'
 import vectorFormat from './source/vector'
 
-/** Create a new Geoportail source 
+/** Read a new carte 
  * @param {Object} globe
  * @param {Object} carte
- * @returns {WMTSSource}
  */
  function carteFormat(globe, carte) {
   globe.setCenter([carte.param.lon, carte.param.lat], carte.param.zoom)

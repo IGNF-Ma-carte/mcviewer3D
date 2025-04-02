@@ -9,7 +9,7 @@ export default {
       }
     },
     "source": {
-      "url": "https://wxs.ign.fr/altimetrie/geoportail/wmts",
+      "url": "https://data.geopf.fr/wmts",
         "crs": "EPSG:4326",
       "format": "image/x-bil;bits=32",
       "attribution" : {
@@ -58,7 +58,7 @@ export default {
     "source": {
       "format": "image/x-bil;bits=32",
       "crs": "EPSG:4326",
-      "url": "https://wxs.ign.fr/altimetrie/geoportail/wmts",
+      "url": "https://data.geopf.fr/wmts",
       "name": "ELEVATION.ELEVATIONGRIDCOVERAGE.SRTM3",
       "tileMatrixSet": "WGS84G",
       "tileMatrixSetLimits": {

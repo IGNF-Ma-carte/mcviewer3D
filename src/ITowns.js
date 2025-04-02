@@ -1,6 +1,6 @@
 import 'ol-ext/dist/ol-ext.css'
 
-import * as itowns from 'itowns'
+import * as itowns from './itowns/itowns.js'
 
 import configElevation from './config/elevation.js'
 import ol_ext_element from 'ol-ext/util/element'

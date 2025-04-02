@@ -1,7 +1,7 @@
 export default {
   "id":   "Ortho",
   "source": {
-    "url": "https://wxs.ign.fr/decouverte/geoportail/wmts",
+    "url": "https://data.geopf.fr/wmts",
     "crs": "EPSG:3857",
     "networkOptions": {
       "crossOrigin": "anonymous"

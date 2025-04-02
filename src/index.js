@@ -1,7 +1,5 @@
-import ITowns from './ITowns.js'
-
 import api from 'mcutils/api/api'
-
+import ITowns from './ITowns.js'
 import carteFormat from './format/carte.js'
 import layerFormat from './format/layer'
 import geoportailFormat from './format/source/geoportail'
@@ -52,7 +50,6 @@ var marne = new itowns.FeatureGeometryLayer('Marne', {
 globe.addLayer(marne);
 /**/
 
-/* DEBUG */
+/* DEBUG * /
 window.globe = globe
-import * as itowns from 'itowns'
-window.itowns = itowns;
+*/

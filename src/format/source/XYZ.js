@@ -1,4 +1,4 @@
-import * as itowns from 'itowns'
+import * as itowns from '../../itowns/itowns'
 
 /** Create a new TMS source XYZ
  * @param {Object} l

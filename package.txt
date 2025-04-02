@@ -1,0 +1,4 @@
+  // add to package.json
+  "@parcel/resolver-default": {
+    "packageExports": true
+  }

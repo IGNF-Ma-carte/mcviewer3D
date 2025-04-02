@@ -1,8 +1,10 @@
-import * as itowns from 'itowns'
-import { defaultIgnStyle } from 'mcutils/style/ignStyle'
+import * as itowns from '../../itowns/itowns'
+import VectorStyle from 'mcutils/layer/VectorStyle'
 import GeoJSONXFormat from 'GeoJSONX/geojsonx'
 
 import SymbolLib from 'mcutils/style/SymbolLib';
+
+const defaultIgnStyle = VectorStyle.prototype.defaultIgnStyle;
 
 function getBase64Image(img) {
   var canvas = document.createElement("canvas");
@@ -76,13 +78,7 @@ function vectorFormat(l, options) {
     })
   }
 
-  const result = new itowns.FileSource({
-    crs: 'EPSG:3857',
-    fetchedData: geojson,
-    parser: itowns.GeoJsonParser.parse
-  });
-
-  setTimeout(() => {
+  function setDataStyle() {
     // Style features
     l.features.forEach((f, i) => {
       const ignStyle = {};
@@ -114,9 +110,21 @@ function vectorFormat(l, options) {
         }
       }
       // Set style
-      geojson.features[i].properties.style = new itowns.Style(style);
+      // geojson.features[i].properties.style = new itowns.Style(style);
+      geojson.features[i].properties._style = style;
     })
-  })
+  }
+
+//  setTimeout(setDataStyle)
+  setDataStyle();
+
+  // Result
+  const result = new itowns.FileSource({
+    crs: 'EPSG:3857',
+    fetchedData: geojson,
+    parser: itowns.GeoJsonParser.parse
+  });
+
   return result
 }
 
