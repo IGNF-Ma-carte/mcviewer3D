@@ -34,7 +34,12 @@ function layerFormat(source, layer, options) {
       },
       fill: {
         color: f => f._style.fill.color,
-        pattern: f => f._style.fill.pattern
+        pattern: f => f._style.fill.pattern,
+      },
+      icon: {
+        source: "https://cdn.futura-sciences.com/cdn-cgi/image/width=1024,quality=60,format=auto/sources/images/dossier/773/01-intro-773.jpg",
+        // anchor: f => f._style.icon.anchor,
+        size: 1
       }
     }
   

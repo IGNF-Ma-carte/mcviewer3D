@@ -1,8 +1,23 @@
 import * as itowns from '../../itowns/itowns'
 import VectorStyle from 'mcutils/layer/VectorStyle'
 import GeoJSONXFormat from 'GeoJSONX/geojsonx'
+import { ignStyleDef } from 'mcutils/style/ignStyle'
 
 import SymbolLib from 'mcutils/style/SymbolLib';
+
+// Decode style
+const shortStyle = {}
+// Style / short hashtable
+Object.keys(ignStyleDef).forEach(s => {
+  const short = ignStyleDef[s].short
+  if (!short) {
+    console.error('MISSING style: ', s)
+  } else if (!shortStyle[short]) {
+    shortStyle[short] = s;
+  } else {
+    console.error('DUPLICATE style: ', s, '-', shortStyle[short],  '('+short+')')
+  }
+})
 
 const defaultIgnStyle = VectorStyle.prototype.defaultIgnStyle;
 
@@ -20,7 +35,12 @@ function getPointIcon(ignStyle) {
   if (!ignStyle.pointGlyph) {
     return;
   }
-  const symb = new SymbolLib({ style: ignStyle, type: 'Point'})
+  const symb = new SymbolLib({ 
+    style: ignStyle, 
+    type: 'Point',
+    size: [2*ignStyle.pointRadius, 2*ignStyle.pointRadius],
+    margin: 0
+  })
   return symb.getImage();
 }
 
@@ -62,6 +82,7 @@ function vectorFormat(l, options) {
       const style = {}
       Object.keys(s).forEach(k => style[shortStyle[k]] = s[k])
       features[i].style = style
+      if (!features[i].properties) features[i].properties = {};
     })
     l.data.popupContent.forEach((s, i) => features[i].popupContent = s)
     l.features = features
@@ -69,7 +90,7 @@ function vectorFormat(l, options) {
     l.features.forEach(f => {
       geojson.features.push({
         type: 'Feature',
-        properties: f.attributes,
+        properties: f.attributes || {},
         geometry: {
           type: f.type,
           coordinates: f.coords
@@ -99,18 +120,26 @@ function vectorFormat(l, options) {
       if (ignStyle.fillPattern) {
         const patternImage = getPatternImage(ignStyle);
         style.fill.pattern = patternImage;
-        style.fill.color = 'transparent'
+        style.fill.color = ignStyle.fillColor;
+        patternImage.naturalWidth = patternImage.width
+        patternImage.naturalHeight = patternImage.height
+
       }
       if (ignStyle.pointRadius) {
         style.point = {
           color: ignStyle.symbolColor,
           radius: ignStyle.pointRadius,
           line: ignStyle.pointStrokeColor,
-          width: ignStyle.pointStrokeWidth,
+          width: ignStyle.pointStrokeWidth
         }
+        style.icon = {
+          source: getBase64Image(getPointIcon(ignStyle)),
+          //anchor: [],
+          size: ignStyle.pointRadius,
+        }
+        // console.log(style.icon, ignStyle)
       }
       // Set style
-      // geojson.features[i].properties.style = new itowns.Style(style);
       geojson.features[i].properties._style = style;
     })
   }

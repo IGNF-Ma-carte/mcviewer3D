@@ -6,9 +6,15 @@ import * as itowns from '../../itowns/itowns'
  * @returns {VectorTilesSource}
  */
 function MVTFormat(source, options) {
-  return new itowns.VectorTilesSource({
-    style: source.url
-  })
+  if (source.mbstyle) {
+    return new itowns.VectorTilesSource({
+      style: JSON.parse(source.mbstyle)
+    })
+  } else {
+    return new itowns.VectorTilesSource({
+      style: source.url
+    })
+  }
 }
 
 export default MVTFormat
