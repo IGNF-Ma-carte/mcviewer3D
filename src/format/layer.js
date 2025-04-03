@@ -49,6 +49,10 @@ function layerFormat(source, layer, options) {
   const itLayer = new itowns.ColorLayer('LAYER_' + (layer.id || ''), config)
   itLayer.info.title = layer.title
   itLayer.info.description = layer.description
+  // options
+  itLayer.visible = config.visible
+  itLayer.opacity = config.opacity
+  // Return layer
   return itLayer
 }
 

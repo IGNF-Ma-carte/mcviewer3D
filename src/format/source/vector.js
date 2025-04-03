@@ -69,7 +69,6 @@ function getPatternImage(ignStyle) {
  * @param {Object} options
  */
 function vectorFormat(l, options) {
-  console.log(l)
   const geojson = {
     type: 'FeatureCollection',
     features: []
