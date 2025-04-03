@@ -12,7 +12,7 @@ const globe = new ITowns({
   zooom: 10
 })
 // Exagerate
-globe.setElevationScale(1.5)
+globe.setElevationScale(1)
 
 // Default background (while loading)
 globe.addLayer(layerFormat(geoportailFormat({ layer: 'ORTHOIMAGERY.ORTHOPHOTOS' })))
