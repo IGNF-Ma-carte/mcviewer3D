@@ -102,6 +102,7 @@ function vectorFormat(l, options) {
     // Style features
     l.features.forEach((f, i) => {
       const ignStyle = {};
+      if (!l.style) l.style = {};
       // Get IGN style
       Object.keys(defaultIgnStyle).forEach(k => {
         ignStyle[k] = f.style[k] || l.style[k] || defaultIgnStyle[k]

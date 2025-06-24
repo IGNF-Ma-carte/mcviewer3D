@@ -10,6 +10,7 @@ const limits = configGPP.source.tileMatrixSetLimits;
  * @returns {WMTSSource}
  */
 function geoportailFormat(source, options) {
+  if (source.layer === 'GEOGRAPHICALGRIDSYSTEMS.MAPS') source.layer = 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2'
   // Get capabilities
   const cap = Geoportail.capabilities[source.layer]
   // Default config
