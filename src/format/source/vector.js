@@ -2,6 +2,8 @@ import * as itowns from '../../itowns/itowns'
 import VectorStyle from 'mcutils/layer/VectorStyle'
 import GeoJSONXFormat from 'GeoJSONX/geojsonx'
 import { ignStyleDef } from 'mcutils/style/ignStyle'
+import FillPattern from 'ol-ext/style/FillPattern'
+import Fill from 'ol/style/Fill'
 
 import SymbolLib from 'mcutils/style/SymbolLib';
 
@@ -44,8 +46,6 @@ function getPointIcon(ignStyle) {
   return symb.getImage();
 }
 
-import FillPattern from 'ol-ext/style/FillPattern'
-import Fill from 'ol/style/Fill'
 function getPatternImage(ignStyle) {
   if (!ignStyle.fillPattern) {
     return;

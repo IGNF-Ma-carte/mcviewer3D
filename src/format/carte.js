@@ -62,8 +62,8 @@ import VectorStyle from 'mcutils/format/layer/VectorStyle'
             style: {
               fill: {
                 //base_altitude: (p) => p.alti_sol || 0,
-                base_altitude: (p) => (p.altitude_minimale_sol || 0) * globe.getElevationScale(),
-                extrusion_height: (p) => (p.hauteur || 0) * globe.getElevationScale(),
+                base_altitude: (p) => { return (p.altitude_maximale_sol || p.altitude_minimale_sol || 0) * globe.getElevationScale() },
+                extrusion_height: (p) => ((p.hauteur || 0) + 5) * globe.getElevationScale(),
               }
             },
           });
@@ -71,7 +71,7 @@ import VectorStyle from 'mcutils/format/layer/VectorStyle'
           buildingsLayer.info.title = l.title
           buildingsLayer.info.description = l.description
           // options
-          buildingsLayer.visible = l.visiblility !== false;
+          buildingsLayer.visible = (l.visibility !== false);
           buildingsLayer.opacity = l.opacity
           
           // console.log(buildingsLayer)
