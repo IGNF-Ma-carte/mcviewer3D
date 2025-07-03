@@ -99,8 +99,10 @@ class ITowns {
     const tilt = ol_ext_element.create('DIV', {
       className: 'itowns-tilt',
       click: () => {
-        if (globe.getView().controls.getTilt() < 89) {
+        if (this.getView().controls.getTilt() < 44) {
           this.getView().controls.lookAtCoordinate({ tilt: 90, time: speed }, true)
+        } else if (this.getView().controls.getTilt() < 89) {
+          this.getView().controls.lookAtCoordinate({ tilt: 15, time: speed }, true)
         } else {
           this.getView().controls.lookAtCoordinate({ tilt: 45, time: speed }, true)
         }
